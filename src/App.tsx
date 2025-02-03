@@ -1,4 +1,11 @@
-import {Image, ImageSourcePropType, StyleSheet, Text, View} from 'react-native';
+import {
+  Image,
+  ImageSourcePropType,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import TaraOne from '../assets/1.jpg';
@@ -13,45 +20,50 @@ type DiceProps = PropsWithChildren<{imageUrl: ImageSourcePropType}>;
 const Dice = ({imageUrl}: DiceProps) => {
   return (
     <View>
-      <Image source={imageUrl} style={styles.diceImage}></Image>
+      <Image source={imageUrl} style={styles.taraImage}></Image>
     </View>
   );
 };
 
 const App = () => {
-  const [diceImage, setDiceImage] = useState<ImageSourcePropType>(TaraOne);
+  const [Image, setImage] = useState<ImageSourcePropType>(TaraOne);
 
   const rollDiceOnTap = () => {
     let randomNumber = Math.floor(Math.random() * 6) + 1;
 
     switch (randomNumber) {
       case 1:
-        setDiceImage(TaraOne);
+        setImage(TaraOne);
         break;
       case 2:
-        setDiceImage(TaraTwo);
+        setImage(TaraTwo);
         break;
-      case 1:
-        setDiceImage(TaraOne);
+      case 3:
+        setImage(TaraThree);
         break;
-      case 1:
-        setDiceImage(TaraOne);
+      case 4:
+        setImage(TaraFour);
         break;
-      case 1:
-        setDiceImage(TaraOne);
+      case 5:
+        setImage(TaraFive);
         break;
-      case 1:
-        setDiceImage(TaraOne);
+      case 6:
+        setImage(TaraSix);
         break;
 
       default:
+        setImage(TaraOne);
         break;
     }
   };
 
   return (
     <View style={styles.container}>
-      <Dice imageUrl={diceImage} />
+      <Dice imageUrl={Image} />
+
+      <Pressable onPress={rollDiceOnTap}>
+        <Text style={styles.SwapImageBtnTxt}> Change the Image</Text>
+      </Pressable>
     </View>
   );
 };
@@ -65,19 +77,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FFF2F2',
   },
-  diceDirection: {
+  ImageDirection: {
     margin: 12,
   },
-  diceImage: {width: 400, height: 400},
+  taraImage: {width: 400, height: 400},
 
-  rollDiceBtnTxt: {
+  SwapImageBtnTxt: {
+    marginTop: 10,
     paddingVertical: 10,
     paddingHorizontal: 40,
     borderWidth: 2,
     borderRadius: 8,
     borderColor: '#E5E0FF',
+    backgroundColor: '#FF0000',
     fontSize: 16,
-    color: '#8EA7EA',
+    color: '#FFFFFF',
     fontWeight: '700',
     textTransform: 'uppercase',
   },
