@@ -1,7 +1,12 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-
+import TaraOne from '../assets/1.jpg';
+import TaraTwo from '../assets/2.jpg';
+import TaraThree from '../assets/3.jpeg';
+import TaraFour from '../assets/4.jpeg';
+import TaraFive from '../assets/5.jpg';
+import TaraSix from '../assets/6.jpeg';
 const App = () => {
   return (
     <View>
