@@ -1,5 +1,5 @@
 import {Image, ImageSourcePropType, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import type {PropsWithChildren} from 'react';
 import TaraOne from '../assets/1.jpg';
 import TaraTwo from '../assets/2.jpg';
@@ -19,9 +19,39 @@ const Dice = ({imageUrl}: DiceProps) => {
 };
 
 const App = () => {
+  const [diceImage, setDiceImage] = useState<ImageSourcePropType>(TaraOne);
+
+  const rollDiceOnTap = () => {
+    let randomNumber = Math.floor(Math.random() * 6) + 1;
+
+    switch (randomNumber) {
+      case 1:
+        setDiceImage(TaraOne);
+        break;
+      case 2:
+        setDiceImage(TaraTwo);
+        break;
+      case 1:
+        setDiceImage(TaraOne);
+        break;
+      case 1:
+        setDiceImage(TaraOne);
+        break;
+      case 1:
+        setDiceImage(TaraOne);
+        break;
+      case 1:
+        setDiceImage(TaraOne);
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
-    <View>
-      <Text>App</Text>
+    <View style={styles.container}>
+      <Dice imageUrl={diceImage} />
     </View>
   );
 };
@@ -38,7 +68,7 @@ const styles = StyleSheet.create({
   diceDirection: {
     margin: 12,
   },
-  diceImage: {width: 200, height: 200},
+  diceImage: {width: 400, height: 400},
 
   rollDiceBtnTxt: {
     paddingVertical: 10,
